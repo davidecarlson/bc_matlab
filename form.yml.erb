@@ -9,8 +9,9 @@ cluster:
 form:
   - version
 #  - account
-  - bc_account
+#  - bc_account
   - custom_queue
+  - extra_modules
   - bc_num_hours
   - bc_num_slots
   - num_cores
@@ -37,7 +38,6 @@ attributes:
     help: Please select a queue from the drop-down.
     widget: select
     options:
-      - [ "ood-short-40core", "ood-short-40core" ]    
       - [ "short-40core", "short-40core" ]
       - [ "medium-40core", "medium-40core" ]
       - [ "large-40core", "large-40core" ]
@@ -48,6 +48,10 @@ attributes:
       - [ "long-96core", "long-96core" ]
       - [ "extended-96core", "extended-96core" ]        
         #      - [ "parise", "parise" ]        
+  extra_modules:
+    widget: text_field
+    label: "Additional Modules"
+    help:  "Enter any extra modules to load, separated by spaces (e.g., 'gcc/13.2.0 openmpi/gcc13.2/4.1.6')"    
 #  account:
 #    label: "Project"
 #    widget: select
@@ -133,6 +137,9 @@ attributes:
     label: "MATLAB version"
     help: "This defines the version of MATLAB you want to load."
     options:
+      - [ 
+          "R2024a", "matlab/2024a"
+        ]
       - [
           "R2023a", "matlab/2023a",
         ]

@@ -37,6 +37,11 @@ cd "${HOME}"
 #module load xalt/latest
 module load  <%= context.version %>
 
+# Load additional user-specified modules if any
+<% unless context.extra_modules.nil? || context.extra_modules.strip.empty? %>
+module load <%= context.extra_modules %>
+<% end %>
+
 # Launch MATLAB
 <%- if gpu -%>
 module load intel/16.0.3 virtualgl
